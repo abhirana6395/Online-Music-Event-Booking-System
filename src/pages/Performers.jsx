@@ -25,7 +25,7 @@ export default function Performers() {
       {/* HERO BANNER */}
       <div className="relative h-[85vh] pt-10 w-full flex flex-col justify-center items-center text-center overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-center "
           style={{
             backgroundImage:
               "url('https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2?auto=format&fit=crop&w=1500&q=80')",

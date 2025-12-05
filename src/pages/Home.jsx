@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import api from "../utils/api";
 import { Link } from "react-router-dom";
+import Performers from "./Performers";
 
 export default function Home() {
   const [events, setEvents] = useState([]);
@@ -80,10 +81,10 @@ export default function Home() {
             Welcome To
           </p>
 
-          <h1 className="text-4xl md:text-6xl font-extrabold drop-shadow-xl">
+          <h1 className="text-4xl md:text-6xl font-bold drop-shadow-xl">
             RhythmX
           </h1>
-          <h2 className="text-2xl md:text-4xl font-bold mt-2 drop-shadow-xl">
+          <h2 className="text-2xl md:text-4xl font-semibold mt-2 drop-shadow-xl">
             Feel The Beat. Live The Moment.
           </h2>
           <p className="max-w-xl mt-4 text-base text-purple-100 drop-shadow-md">
@@ -165,6 +166,65 @@ export default function Home() {
           </div>
         </div>
       </div>
+      {/* ORGANIZE QUALITY MUSICAL SHOW SECTION */}
+<div className="relative w-full h-[85vh] bg-[#1a0044] py-20 px-6 md:px-20 overflow-hidden">
+
+  {/* Decorative background waves */}
+  <div className="absolute inset-0 opacity-10">
+    <img
+      src="https://as1.ftcdn.net/v2/jpg/04/82/82/50/1000_F_482825029_UUVQ9UYLunaJ3V4OesWD08xIvRW3H4kf.jpg"
+      className="w-full h-full object-cover"
+      alt="wave"
+    />
+  </div>
+
+  <div className="relative z-10 flex flex-col-reverse md:flex-row items-center gap-10">
+
+  {/* PURPLE CIRCLE BACKGROUND EFFECT */}
+  <div className="absolute left-0 -bottom-20 w-[500px] h-[500px] bg-purple-700/40 rounded-full blur-3xl opacity-70 md:left-10"></div>
+
+  {/* LEFT IMAGE */}
+  <div className="w-full md:w-1/2 flex justify-center relative">
+    <img
+      src="public/logos/woman.png"
+      alt="hero-girl"
+      className="w-[550px] h-[400px] drop-shadow-2xl relative bottom-[-100px]"
+    />
+  </div>
+
+  {/* RIGHT CONTENT */}
+  <div className="w-full md:w-1/2 text-white">
+    <p className="text-sm tracking-widest uppercase text-purple-200 mb-3">
+      RHYTHMX
+    </p>
+
+    <h2 className="text-4xl md:text-5xl font-bold leading-tight">
+      Organize Quality <br /> Musical Shows
+    </h2>
+
+    <p className="mt-4 text-purple-200 max-w-md">
+      Musical show organized world wide, you can join this musical show very
+      easily through this site and confirm your ticket with a click.
+    </p>
+
+    <div className="flex gap-6 mt-6">
+      <button className="bg-purple-600 hover:bg-purple-700 px-6 py-2 rounded-full font-semibold">
+        Learn More
+      </button>
+
+      <Link
+        to="/event-schedule"
+        className="bg-pink-600 hover:bg-pink-700 px-6 py-2 rounded-full font-semibold"
+      >
+        Buy Ticket
+      </Link>
+    </div>
+  </div>
+
+</div>
+</div>
+<Performers />
     </div>
   );
 }
+

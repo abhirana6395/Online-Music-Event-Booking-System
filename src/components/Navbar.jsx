@@ -33,9 +33,9 @@ function Navbar() {
       </div>
 
       {/* CENTER - NAV LINKS */}
-      <div className="hidden md:flex items-center gap-10 text-lg">
-        <Link to="/" className="hover:text-purple-300 transition">Home</Link>
-        <Link to="/performers" className="hover:text-purple-300 transition">Performers</Link>
+      <div className="hidden md:flex items-center gap-10 text-base">
+        <Link to="/" className="hover:text-purple-300 transition">HOME</Link>
+        <Link to="/performers" className="hover:text-purple-300 transition">PERFORMERS</Link>
         
         {/* MUSIC SHOW DROPDOWN */}
         <div 
@@ -44,7 +44,7 @@ function Navbar() {
           onMouseLeave={() => setIsMusicShowOpen(false)}
         >
           <button className="flex items-center gap-1 hover:text-purple-300 transition">
-            Music Show
+            MUSIC SHOW
             <ChevronDown size={18} className={`transition-transform ${isMusicShowOpen ? 'rotate-180' : ''}`} />
           </button>
           
@@ -54,13 +54,13 @@ function Navbar() {
                 to="/events" 
                 className="block px-6 py-3 hover:text-purple-600 transition"
               >
-                Event
+                EVENT
               </Link>
               <Link 
                 to="/event-schedule" 
                 className="block px-6 py-3 hover:text-purple-600 transition"
               >
-                Event Schedule
+                EVENT SCHEDULE
               </Link>
             </div>
           )}
@@ -73,7 +73,7 @@ function Navbar() {
           onMouseLeave={() => setIsPagesOpen(false)}
         >
           <button className="flex items-center gap-1 hover:text-purple-300 transition">
-            Pages
+            PAGES
             <ChevronDown size={18} className={`transition-transform ${isPagesOpen ? 'rotate-180' : ''}`} />
           </button>
           
@@ -83,44 +83,44 @@ function Navbar() {
                 to="/about" 
                 className="block px-6 py-3 hover:text-purple-600 transition"
               >
-                About Us
+                ABOUT US
               </Link>
               <Link 
                 to="/vanue" 
                 className="block px-6 py-3 hover:text-purple-600 transition"
               >
-                Vanue
+                VANUE
               </Link>
               <Link 
                 to="/ticket" 
                 className="block px-6 py-3 hover:text-purple-600 transition"
               >
-                Ticket
+                TICKET
               </Link>
               <Link 
                 to="/style" 
                 className="block px-6 py-3 hover:text-purple-600 transition"
               >
-                Style Guide
+                STYLE GUIDE
               </Link>
               <Link 
                 to="/licenses" 
                 className="block px-6 py-3 hover:text-purple-600 transition"
               >
-                Licenses
+                LICENSES
               </Link>
               <Link 
                 to="/changelog" 
                 className="block px-6 py-3 hover:text-purple-600 transition"
               >
-                Changelog
+                CHANGELOG
               </Link>
             </div>
           )}
         </div>
 
-        <Link to="/blog" className="hover:text-purple-300 transition">Blog</Link>
-        <Link to="/contact" className="hover:text-purple-300 transition">Contacts</Link>
+        <Link to="/blog" className="hover:text-purple-300 transition">BLOG</Link>
+        <Link to="/contact" className="hover:text-purple-300 transition">CONTACTS</Link>
       </div>
 
       {/* RIGHT - Cart + Buy Ticket */}
@@ -129,9 +129,9 @@ function Navbar() {
           <ShoppingCart size={26} className="text-white hover:text-purple-300" />
         </button>
 
-        <button className="bg-pink-600 hover:bg-pink-700 px-5 py-2 rounded-full font-semibold shadow-md transition">
+        <Link to="/ticket" className="bg-pink-600 hover:bg-pink-700 px-5 py-2 rounded-full font-semibold shadow-md transition">
           Buy Ticket
-        </button>
+        </Link>
       </div>
     </nav>
   );

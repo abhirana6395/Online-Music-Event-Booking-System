@@ -133,35 +133,61 @@ export default function MusicShow() {
         </div>
       ))}
     </div>
+      {/* SPONSORS SECTION */}
+<div className="relative w-full py-20 mt-10 overflow-hidden">
 
-    {/* SPONSORS SLIDER (outside map) */}
-    <div className="w-full py-16 bg-gradient-to-r from-purple-800/50 via-purple-900/50 to-purple-800/50">
-      <Swiper
-        slidesPerView={3}
-        spaceBetween={30}
-        loop={true}
-        autoplay={{ delay: 2000, disableOnInteraction: false }}
-        modules={[Autoplay]}
-        breakpoints={{
-          640: { slidesPerView: 2 },
-          768: { slidesPerView: 3 },
-          1024: { slidesPerView: 4 },
-        }}
-        className="mySwiper"
-      >
-        <SwiperSlide className="flex justify-center">
-          <img src="/logos/playmusic.png" alt="play music" className="h-24 object-contain opacity-90 hover:opacity-100 transition" />
-        </SwiperSlide>
+  {/* Background same as Ticket Page (Gradient + Blurry Glow Image) */}
+  <div className="absolute inset-0">
+    <img
+      src="/images/bg-effect.png"
+      alt="background"
+      className="w-full h-full object-cover opacity-40"
+    />
+    <div className="absolute inset-0 bg-gradient-to-br from-purple-700/70 via-purple-900/80 to-indigo-900/70"></div>
+  </div>
 
-        <SwiperSlide className="flex justify-center">
-          <img src="public/logos/musibeat.png" alt="musibeat" className="h-24 object-contain opacity-90 hover:opacity-100 transition" />
-        </SwiperSlide>
+  {/* Heading */}
+  <h3 className="relative z-10 text-center text-lg tracking-[0.3em] font-semibold text-purple-200 mb-6">
+    SPONSORS
+  </h3>
 
-        <SwiperSlide className="flex justify-center">
-          <img src="/logos/soundbeat.png" alt="soundbeat" className="h-24 object-contain opacity-90 hover:opacity-100 transition" />
-        </SwiperSlide>
-      </Swiper>
+  {/* Infinite Sliding Logos */}
+  <div className="relative z-10 h-[30vh] w-full overflow-hidden">
+    <div className="flex items-center gap-20 animate-slide mt-10">
+
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Apple-logo.png"
+        className="h-20 opacity-80 hover:opacity-100 transition drop-shadow-[0_0_12px_#aa00ff]"
+      />
+
+      <img
+        src="https://img.icons8.com/nolan/96/bandlab.png"
+        className="h-50"
+      />
+
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/2/24/Adidas_logo.png"
+        className="h-20 opacity-80 hover:opacity-100 transition drop-shadow-[0_0_12px_#ff00aa]"
+      />
+
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/5/51/Google.png"
+        className="h-20 opacity-80 hover:opacity-100 transition drop-shadow-[0_0_12px_#00ff88]"
+      />
+
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Netflix_logo.svg"
+        className="h-20 opacity-80 hover:opacity-100 transition drop-shadow-[0_0_12px_#ffaa00]"
+      />
+
+      <img
+        src="https://img.icons8.com/fluency/48/youtube-music.png"
+        className="h-20 "
+      />
+
     </div>
+  </div>
+</div>
 
   </div>
 );

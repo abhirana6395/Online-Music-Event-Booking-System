@@ -1,1 +1,11 @@
 @import "tailwindcss";
+
+@keyframes slide {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-slide {
+  animation: slide 16s linear infinite;
+  width: max-content;
+}
