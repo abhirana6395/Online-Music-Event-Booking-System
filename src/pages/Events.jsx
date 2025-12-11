@@ -136,14 +136,15 @@ export default function MusicShow() {
       {/* SPONSORS SECTION */}
 <div className="relative w-full py-20 mt-10 overflow-hidden">
 
-  {/* Background same as Ticket Page (Gradient + Blurry Glow Image) */}
+  {/* Background Image (from your Unsplash link) */}
   <div className="absolute inset-0">
     <img
-      src="/images/bg-effect.png"
+      src="https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2?auto=format&fit=crop&w=1500&q=80"
       alt="background"
-      className="w-full h-full object-cover opacity-40"
+      className="w-full h-full object-cover opacity-100"
     />
-    <div className="absolute inset-0 bg-gradient-to-br from-purple-700/70 via-purple-900/80 to-indigo-900/70"></div>
+    {/* Purple Blur Overlay */}
+    <div className="absolute inset-0 bg-gradient-to-br from-purple-800/70 via-purple-900/80 to-indigo-900/70 backdrop-blur-sm"></div>
   </div>
 
   {/* Heading */}
@@ -153,41 +154,47 @@ export default function MusicShow() {
 
   {/* Infinite Sliding Logos */}
   <div className="relative z-10 h-[30vh] w-full overflow-hidden">
-    <div className="flex items-center gap-20 animate-slide mt-10">
+    <div className="flex items-center gap-20 animate-slide">
 
       <img
-        src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Apple-logo.png"
-        className="h-20 opacity-80 hover:opacity-100 transition drop-shadow-[0_0_12px_#aa00ff]"
+        src="./public/logos/Amazon.png"
+        className="h-50 opacity-80 hover:opacity-100 transition drop-shadow-[0_0_12px_#00ff88]"
       />
 
       <img
-        src="https://img.icons8.com/nolan/96/bandlab.png"
-        className="h-50"
+        src="./public/logos/Spotify.png"
+        className="h-50 opacity-80 hover:opacity-100 transition drop-shadow-[0_0_12px_#00ff88]"
       />
 
       <img
-        src="https://upload.wikimedia.org/wikipedia/commons/2/24/Adidas_logo.png"
-        className="h-20 opacity-80 hover:opacity-100 transition drop-shadow-[0_0_12px_#ff00aa]"
+        src="./public/logos/Bandlab.png"
+        className="h-50 opacity-80 hover:opacity-100 transition drop-shadow-[0_0_12px_#00ff88]"
       />
 
       <img
-        src="https://upload.wikimedia.org/wikipedia/commons/5/51/Google.png"
-        className="h-20 opacity-80 hover:opacity-100 transition drop-shadow-[0_0_12px_#00ff88]"
+        src="./public/logos/Jazz.png"
+        className="h-50 opacity-100 hover:opacity-150 transition drop-shadow-[0_0_12px_#ffaa00]"
       />
 
       <img
-        src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Netflix_logo.svg"
-        className="h-20 opacity-80 hover:opacity-100 transition drop-shadow-[0_0_12px_#ffaa00]"
+        src="./public/logos/Play.png"
+        className="h-50 opacity-80 hover:opacity-100 transition drop-shadow-[0_0_12px_#00ff88]"
       />
 
       <img
-        src="https://img.icons8.com/fluency/48/youtube-music.png"
-        className="h-20 "
+        src="./public/logos/Soundbeat.png"
+        className="h-50 opacity-80 hover:opacity-100 transition drop-shadow-[0_0_12px_#ffaa00]"
+      />
+
+      <img
+        src="./public/logos/Youtube.png"
+        className="h-50 opacity-80 hover:opacity-100 transition drop-shadow-[0_0_12px_#00ff88]"
       />
 
     </div>
   </div>
 </div>
+
 
   </div>
 );

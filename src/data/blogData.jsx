@@ -2,7 +2,7 @@ export const blogData = [
   {
     id: 1,
     category: "World music",
-    date: "Aug 25, 2023",
+    date: "Aug 25, 2026",
     title: "Musical Show Worldwide this time is not so easy",
     image: "/images/blog1.jpg",
     authorName: "John Deo",
@@ -18,7 +18,7 @@ export const blogData = [
   {
     id: 2,
     category: "Pop",
-    date: "Aug 23, 2023",
+    date: "Aug 23, 2026",
     title: "Solo Musical Concert of Robert Mackton",
     image: "/images/blog2.jpg",
     authorName: "Robert Mackton",
@@ -32,7 +32,7 @@ export const blogData = [
   {
     id: 3,
     category: "Rock",
-    date: "Aug 21, 2023",
+    date: "Aug 21, 2026",
     title: "What to Consider when You decide to Attend a Festival",
     image: "/images/blog3.jpg",
     authorName: "Chris John",
@@ -44,9 +44,9 @@ export const blogData = [
     `
   },
    {
-    id: 3,
+    id: 4,
     category: "Rock",
-    date: "Aug 21, 2023",
+    date: "Aug 19, 2026",
     title: "What to Consider when You decide to Attend a Festival",
     image: "/images/blog3.jpg",
     authorName: "Chris John",
@@ -58,9 +58,9 @@ export const blogData = [
     `
   },
    {
-    id: 3,
+    id: 5,
     category: "Rock",
-    date: "Aug 21, 2023",
+    date: "Aug 17, 2026",
     title: "What to Consider when You decide to Attend a Festival",
     image: "/images/blog3.jpg",
     authorName: "Chris John",
@@ -72,9 +72,9 @@ export const blogData = [
     `
   },
    {
-    id: 3,
+    id: 6,
     category: "Rock",
-    date: "Aug 21, 2023",
+    date: "Aug 15, 2026",
     title: "What to Consider when You decide to Attend a Festival",
     image: "/images/blog3.jpg",
     authorName: "Chris John",

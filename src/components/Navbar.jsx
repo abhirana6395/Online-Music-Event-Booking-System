@@ -1,10 +1,17 @@
 import { Link } from "react-router-dom";
 import { ShoppingCart, ChevronDown } from "lucide-react";
 import { useState } from "react";
+import CartSidebar from "./CartSidebar";
+import { useCart } from "../context/CartContext";
+
 
 function Navbar() {
   const [isMusicShowOpen, setIsMusicShowOpen] = useState(false);
   const [isPagesOpen, setIsPagesOpen] = useState(false);
+  const [openCart, setOpenCart] = useState(false);
+  const { cart } = useCart();
+
+
 
   return (
     <nav className="w-full absolute top-0 left-0 z-50 text-white px-6 py-4 flex items-center justify-between">
@@ -86,10 +93,10 @@ function Navbar() {
                 ABOUT US
               </Link>
               <Link 
-                to="/vanue" 
+                to="/venue" 
                 className="block px-6 py-3 hover:text-purple-600 transition"
               >
-                VANUE
+                VENUE
               </Link>
               <Link 
                 to="/ticket" 
@@ -97,24 +104,7 @@ function Navbar() {
               >
                 TICKET
               </Link>
-              <Link 
-                to="/style" 
-                className="block px-6 py-3 hover:text-purple-600 transition"
-              >
-                STYLE GUIDE
-              </Link>
-              <Link 
-                to="/licenses" 
-                className="block px-6 py-3 hover:text-purple-600 transition"
-              >
-                LICENSES
-              </Link>
-              <Link 
-                to="/changelog" 
-                className="block px-6 py-3 hover:text-purple-600 transition"
-              >
-                CHANGELOG
-              </Link>
+              
             </div>
           )}
         </div>
@@ -125,9 +115,16 @@ function Navbar() {
 
       {/* RIGHT - Cart + Buy Ticket */}
       <div className="flex items-center gap-4">
-        <button className="relative">
-          <ShoppingCart size={26} className="text-white hover:text-purple-300" />
-        </button>
+        <button onClick={() => setOpenCart(true)} className="relative">
+  <ShoppingCart size={26} />
+  <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs w-5 h-5 
+    flex items-center justify-center rounded-full">
+    {cart.length}
+  </span>
+</button>
+
+{openCart && <CartSidebar setOpenCart={setOpenCart} />}
+
 
         <Link to="/ticket" className="bg-pink-600 hover:bg-pink-700 px-5 py-2 rounded-full font-semibold shadow-md transition">
           Buy Ticket

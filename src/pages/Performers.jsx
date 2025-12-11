@@ -18,6 +18,28 @@ export default function Performers() {
       role: "Melody Star",
       img: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=800&q=80",
     },
+    {
+      name: "Randall Walters",
+      role: "Selko Band",
+      img: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=800&q=80",
+    },
+    {
+      name: "Randall Walters",
+      role: "Selko Band",
+      img: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=800&q=80",
+    },
+    {
+      name: "Randall Walters",
+      role: "Selko Band",
+      img: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=800&q=80",
+    },
+
+
+    {
+      name: "Randall Walters",
+      role: "Selko Band",
+      img: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=800&q=80",
+    },
   ];
 
   return (
@@ -44,7 +66,7 @@ export default function Performers() {
       </div>
 
       {/* PERFORMERS SECTION */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 px-6 md:px-20 py-20 bg-gradient-to-b from-purple-950 via-purple-900 to-purple-950">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-12 px-6 md:px-20 py-20 bg-gradient-to-b from-purple-950 via-purple-900 to-purple-950">
         {artists.map((artist, idx) => (
           <div
             key={idx}

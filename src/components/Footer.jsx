@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaFacebookF, FaInstagram, FaTwitter, FaMusic, FaWaveSquare } from "react-icons/fa";
+import { Link } from "react-router-dom";
+
 
 export default function Footer() {
   const [showButton, setShowButton] = useState(false);
@@ -93,22 +95,20 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4">USEFUL LINK</h3>
             <ul className="space-y-2 text-purple-300">
-              <li>About us</li>
-              <li>Upcoming Events</li>
-              <li>Performer</li>
-              <li>Latest News</li>
-              <li>Contact us</li>
+              <li><Link to="/about" className="hover:text-white transition">About us</Link></li>
+    <li><Link to="/events" className="hover:text-white transition">Upcoming Events</Link></li>
+    <li><Link to="/performers" className="hover:text-white transition">Performer</Link></li>
+    <li><Link to="/blog" className="hover:text-white transition">Latest News</Link></li>
+    <li><Link to="/contact" className="hover:text-white transition">Contact us</Link></li>
+  
             </ul>
           </div>
 
           <div>
             <h3 className="text-lg font-semibold mb-4">INFORMATION</h3>
             <ul className="space-y-2 text-purple-300">
-              <li>Purchase Ticket</li>
-              <li>Login/Register</li>
-              <li>Style Guide</li>
-              <li>Licenses</li>
-              <li>Change Log</li>
+              <li><Link to="/ticket" className="hover:text-white transition">Purchase Ticket</Link></li>
+    <li><Link to="/login" className="hover:text-white transition">Login/Register</Link></li>
             </ul>
           </div>
 

@@ -45,7 +45,7 @@ export default function Ticket() {
   return (
     <div className="relative w-full bg-[#2D013C] text-white overflow-hidden">
 
-      {/* ===== BACKGROUND ===== */}
+      {/* ===== MAIN BACKGROUND ===== */}
       <div
         className="absolute inset-0 bg-cover bg-center scale-110 opacity-40"
         style={{
@@ -75,38 +75,31 @@ export default function Ticket() {
 
       {/* ===== PRICING CARDS ===== */}
       <div className="relative w-full py-20 flex flex-col md:flex-row justify-center gap-10 px-4">
-
         {plans.map((card, index) => (
           <div
             key={index}
             className="
-               bg-[#4A0170]/70
-  backdrop-blur-xl 
-  rounded-3xl 
-  p-8 
-  w-full md:w-80 
-  text-center 
-  border border-pink-400/40
-  shadow-[0_0_35px_#ff00ff90]
-  hover:shadow-[0_0_60px_#ff00ff]
-  hover:-translate-y-2
-  hover:border-pink-500
-  transition-all duration-300
+              bg-[#4A0170]/70 backdrop-blur-xl rounded-3xl 
+              p-8 w-full md:w-80 text-center 
+              border border-pink-400/40
+              shadow-[0_0_35px_#ff00ff90]
+              hover:shadow-[0_0_60px_#ff00ff]
+              hover:-translate-y-2
+              hover:border-pink-500
+              transition-all duration-300
             "
           >
             <h3 className="text-lg tracking-widest mb-4">
-  <span className="
-    bg-gradient-to-r from-pink/40 to-[#C300FF]/40 
-    px-3 py-1 
-    rounded-full 
-    text-white 
-    shadow-md 
-    border border-white/10
-  ">
-    {card.title}
-  </span>
-</h3>
-
+              <span
+                className="
+                  bg-gradient-to-r from-pink-500/40 to-[#C300FF]/40 
+                  px-3 py-1 rounded-full text-white shadow-md 
+                  border border-white/10
+                "
+              >
+                {card.title}
+              </span>
+            </h3>
 
             <h1 className="text-5xl font-bold mb-8">{card.price}</h1>
 
@@ -124,14 +117,51 @@ export default function Ticket() {
             </button>
           </div>
         ))}
-
       </div>
 
-      {/* ===== MODAL POPUP ===== */}
+      {/* =================================================== */}
+      {/*                 SPONSOR SECTION FIXED              */}
+      {/* =================================================== */}
+
+      <div className="relative w-full py-20 overflow-hidden">
+
+        {/* Background */}
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2?auto=format&fit=crop&w=1500&q=80"
+            className="w-full h-full object-cover opacity-50"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-800/70 via-purple-900/80 to-indigo-900/70 backdrop-blur-sm"></div>
+        </div>
+
+        {/* Heading */}
+        <h3 className="relative z-10 text-center text-lg tracking-[0.3em] font-semibold text-purple-200 mb-6">
+          SPONSORS
+        </h3>
+
+        {/* Logos sliding */}
+        <div className="relative z-10 h-[30vh] w-full overflow-hidden">
+          <div className="flex items-center gap-20 animate-slide">
+
+            <img src="/logos/Amazon.png" className="h-50 opacity-80 hover:opacity-100 transition drop-shadow-[0_0_12px_#00ff88]" />
+            <img src="/logos/Spotify.png" className="h-50 opacity-80 hover:opacity-100 transition drop-shadow-[0_0_12px_#00ff88]" />
+            <img src="/logos/Bandlab.png" className="h-50 opacity-80 hover:opacity-100 transition drop-shadow-[0_0_12px_#00ff88]" />
+            <img src="/logos/Jazz.png" className="h-50 opacity-100 hover:opacity-150 transition drop-shadow-[0_0_12px_#00ff88]" />
+            <img src="/logos/Play.png" className="h-50 opacity-80 hover:opacity-100 transition drop-shadow-[0_0_12px_#00ff88]" />
+            <img src="/logos/Soundbeat.png" className="h-50 opacity-80 hover:opacity-100 transition drop-shadow-[0_0_12px_#00ff88]" />
+            <img src="/logos/Youtube.png" className="h-50 opacity-80 hover:opacity-100 transition drop-shadow-[0_0_12px_#00ff88]" />
+
+          </div>
+        </div>
+      </div>
+
+      {/* ===== POPUP ===== */}
       {openModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-black/70 backdrop-blur-lg z-50">
           <div className="bg-[#3A0155] p-8 rounded-3xl w-80 text-center shadow-[0_0_30px_#ff00ff] border border-purple-400/40">
+
             <h2 className="text-2xl font-bold mb-3">Purchase Ticket</h2>
+
             <p className="text-purple-200 mb-6">
               You selected:{" "}
               <span className="text-pink-400 font-semibold">{selectedPlan}</span>
@@ -147,9 +177,11 @@ export default function Ticket() {
             >
               Cancel
             </button>
+
           </div>
         </div>
       )}
+
     </div>
   );
 }

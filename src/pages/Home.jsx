@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import api from "../utils/api";
 import { Link } from "react-router-dom";
-import Performers from "./Performers";
 
 export default function Home() {
   const [events, setEvents] = useState([]);
@@ -223,7 +222,6 @@ export default function Home() {
 
 </div>
 </div>
-<Performers />
     </div>
   );
 }
