@@ -13,6 +13,7 @@ import BlogDetail from "./pages/BlogDetail";
 import Ticket from "./pages/Ticket";
 import Venue from "./pages/Venue";
 import Register from "./pages/Register";
+import AdminProtected from "./components/AdminProtected";
 
 // ADMIN
 import AdminLayout from "./admin/AdminLayout";
@@ -27,15 +28,16 @@ import AdminLogin from "./admin/pages/AdminLogin";
 function Layout() {
   const location = useLocation();
 
-  // pages jaha NAVBAR blur & FOOTER hide hoga
+  // pages jaha NAVBAR blur hoga
   const authPages = ["/login", "/register"];
 
-  const isAuthOrAdminPage = authPages.includes(location.pathname) || location.pathname.startsWith("/admin");
+  const isAuthPage = authPages.includes(location.pathname);
+  const isAdminPage = location.pathname.startsWith("/admin");
 
   return (
     <>
-      {/* Navbar -> always shown but blur on auth pages */}
-      <Navbar isBlur={isAuthOrAdminPage} />
+      {/* Navbar -> shown on non-admin pages, blurred on auth pages */}
+      {!isAdminPage && <Navbar isBlur={isAuthPage} />}
 
       <Toaster position="top-right" />
 
@@ -54,6 +56,11 @@ function Layout() {
 
         {/* ADMIN PANEL - NO NAV, NO FOOTER */}
         <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/admin" element={
+          <AdminProtected>
+            <AdminDashboard />
+          </AdminProtected>
+        } />
         <Route path="/admin/*" element={<AdminLayout />}>
           <Route path="dashboard" element={<AdminDashboard />} />
           <Route path="events" element={<AdminEvents />} />
@@ -65,7 +72,7 @@ function Layout() {
       </Routes>
 
       {/* Footer hide on login/register and admin */}
-      {!isAuthOrAdminPage && <Footer />}
+      {!isAuthPage && !isAdminPage && <Footer />}
     </>
   );
 }

@@ -157,37 +157,37 @@ export default function MusicShow() {
     <div className="flex items-center gap-20 animate-slide">
 
       <img
-        src="./public/logos/Amazon.png"
+        src="./logos/Amazon.png"
         className="h-50 opacity-80 hover:opacity-100 transition drop-shadow-[0_0_12px_#00ff88]"
       />
 
       <img
-        src="./public/logos/Spotify.png"
+        src="./logos/Spotify.png"
         className="h-50 opacity-80 hover:opacity-100 transition drop-shadow-[0_0_12px_#00ff88]"
       />
 
       <img
-        src="./public/logos/Bandlab.png"
+        src="./logos/Bandlab.png"
         className="h-50 opacity-80 hover:opacity-100 transition drop-shadow-[0_0_12px_#00ff88]"
       />
 
       <img
-        src="./public/logos/Jazz.png"
+        src="./logos/Jazz.png"
         className="h-50 opacity-100 hover:opacity-150 transition drop-shadow-[0_0_12px_#ffaa00]"
       />
 
       <img
-        src="./public/logos/Play.png"
+        src="./logos/Play.png"
         className="h-50 opacity-80 hover:opacity-100 transition drop-shadow-[0_0_12px_#00ff88]"
       />
 
       <img
-        src="./public/logos/Soundbeat.png"
+        src="./logos/Soundbeat.png"
         className="h-50 opacity-80 hover:opacity-100 transition drop-shadow-[0_0_12px_#ffaa00]"
       />
 
       <img
-        src="./public/logos/Youtube.png"
+        src="./logos/Youtube.png"
         className="h-50 opacity-80 hover:opacity-100 transition drop-shadow-[0_0_12px_#00ff88]"
       />
 

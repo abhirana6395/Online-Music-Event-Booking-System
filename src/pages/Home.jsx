@@ -90,9 +90,9 @@ export default function Home() {
             Join the most electrifying musical events across the world. Book
             your tickets now and be part of the unforgettable night.
           </p>
-          <button className="mt-6 bg-purple-600 hover:bg-purple-700 px-5 py-2 rounded-full text-base font-semibold transition-all duration-300 shadow-lg w-fit">
+          <Link to="/ticket" className="mt-6 bg-purple-600 hover:bg-purple-700 px-5 py-2 rounded-full text-base font-semibold transition-all duration-300 shadow-lg w-fit">
             Book Tickets
-          </button>
+          </Link>
 
           {/* COUNTDOWN TIMER */}
           <div className="mt-10 flex flex-col md:flex-row items-start md:items-center gap-8">

@@ -3,9 +3,9 @@ import React, { useState } from "react";
 export default function EventSchedule() {
   const artists = [
     {
-      name: "Kate Middleton",
+      name: "Adele",
       role: "Rock Star",
-      img: "https://images.unsplash.com/photo-1598387993441-a364f854c3c3?auto=format&fit=crop&w=600&q=80",
+      img: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRe3yMQpyxGpsUCACEc2_H5NIu3uGZPzeP0pbHNkiV91v5c82cQ",
       schedule: [
         {
           date: "25 August, 2023",
@@ -20,14 +20,19 @@ export default function EventSchedule() {
       ]
     },
     {
-      name: "Randall Walter",
+      name: "Jennifer Lopez",
       role: "Rock Star",
-      img: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=80",
+      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXoWBTGKGOK5XS6WJecIUaZ6EDkoutDfzIGfN9ujoGukbJNJA1fUvK6vDjuLpwOb6pI09m_ifAQsY5hI4wEa4rgQTbzhii4U0iHHLiJQ&s=10",
       schedule: [
         {
           date: "20 July, 2023",
           time: "6.00 pm",
           place: "New York Music Arena, NY 10001, USA",
+        },
+        {
+          date: "30 August, 2023",
+          time: "9.30 pm",
+          place: "Sydney Opera House, Bennelong Point, Sydney NSW 2000, Australia",
         }
       ]
     },
@@ -40,6 +45,11 @@ export default function EventSchedule() {
           date: "14 June, 2023",
           time: "7.00 pm",
           place: "Municipal Auditorium New Orleans, LA 70130, United States",
+        },
+        {
+          date: "30 August, 2023",
+          time: "9.30 pm",
+          place: "Sydney Opera House, Bennelong Point, Sydney NSW 2000, Australia",
         }
       ]
     },
@@ -52,6 +62,11 @@ export default function EventSchedule() {
           date: "10 May, 2023",
           time: "5.30 pm",
           place: "New School Tishman Auditorium, New York, NY 10003, USA",
+        },
+        {
+          date: "30 August, 2023",
+          time: "9.30 pm",
+          place: "Sydney Opera House, Bennelong Point, Sydney NSW 2000, Australia",
         }
       ]
     }
