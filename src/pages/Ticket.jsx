@@ -1,83 +1,114 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import api from "../utils/api";
+import { useSearchParams } from "react-router-dom";
 
 export default function Ticket() {
+  const [searchParams] = useSearchParams();
+  const eventId = searchParams.get("eventId");
+
+  const [tickets, setTickets] = useState([]);
   const [openModal, setOpenModal] = useState(false);
-  const [selectedPlan, setSelectedPlan] = useState("");
+  const [selectedTicket, setSelectedTicket] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  const plans = [
-    {
-      title: "SINGLE SHOW",
-      price: "$102",
-      features: [
-        "Ticket for one Show",
-        "One 500 ml water bottle",
-        "VIP gate entry pass",
-        "First row seat allow",
-      ],
-    },
-    {
-      title: "THREE SHOW",
-      price: "$280",
-      features: [
-        "Ticket for three Shows",
-        "One 500 ml water bottle",
-        "VIP gate entry pass",
-        "First row seat allow",
-      ],
-    },
-    {
-      title: "FULL SEASON",
-      price: "$458",
-      features: [
-        "Ticket for full Season",
-        "One 500 ml water bottle",
-        "VIP gate entry pass",
-        "First row seat allow",
-      ],
-    },
-  ];
+  // user details (temporary – later auth se aayega)
+  const [user, setUser] = useState({
+    name: "Guest User",
+    email: "guest@test.com",
+  });
 
-  const openPopup = (plan) => {
-    setSelectedPlan(plan);
+  // 🔹 Load tickets for selected event
+  useEffect(() => {
+    if (!eventId) {
+      setLoading(false);
+      return;
+    }
+
+    const loadTickets = async () => {
+      try {
+        const res = await api.get(`/public/tickets/event/${eventId}`);
+        setTickets(res.data || []);
+      } catch (err) {
+        console.error("Failed to load tickets", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadTickets();
+  }, [eventId]);
+
+  const openPopup = (ticket) => {
+    setSelectedTicket(ticket);
     setOpenModal(true);
   };
+
+  // 🔥 CONFIRM BOOKING (REAL API)
+  const confirmBooking = async () => {
+    if (!selectedTicket) return;
+
+    try {
+      await api.post("/bookings", {
+        eventId: Number(eventId),
+        ticketId: selectedTicket.id,
+        quantity: 1,
+        name: user.name,
+        email: user.email,
+      });
+
+      alert("🎉 Ticket booked successfully!");
+      setOpenModal(false);
+    } catch (err) {
+      alert("❌ Booking failed");
+      console.error(err);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-black text-white">
+        Loading tickets...
+      </div>
+    );
+  }
 
   return (
     <div className="relative w-full bg-[#2D013C] text-white overflow-hidden">
 
-      {/* ===== MAIN BACKGROUND ===== */}
+      {/* ===== BACKGROUND ===== */}
       <div
         className="absolute inset-0 bg-cover bg-center scale-110 opacity-40"
         style={{
           backgroundImage:
             "url('https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2?auto=format&fit=crop&w=1500&q=80')",
         }}
-      ></div>
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-purple-900/80 via-purple-800/60 to-[#2D013C]" />
 
-      {/* Purple gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-purple-900/80 via-purple-800/60 to-[#2D013C]"></div>
-
-      {/* ===== HERO TEXT ===== */}
+      {/* ===== HERO ===== */}
       <div className="relative text-center pt-32 pb-10">
         <h3 className="text-lg tracking-[0.35em] font-semibold text-purple-300">
           TICKET
         </h3>
-
-        <h1 className="text-5xl md:text-6xl font-bold mt-4 drop-shadow-xl">
+        <h1 className="text-5xl md:text-6xl font-bold mt-4">
           Our Ticket
         </h1>
-
         <p className="max-w-2xl mx-auto mt-4 text-purple-200 opacity-90 px-6">
-          Musical show organized worldwide — join the musical show easily and
-          confirm your ticket with just a click.
+          Choose your ticket and confirm instantly.
         </p>
       </div>
 
-      {/* ===== PRICING CARDS ===== */}
+      {/* ===== TICKETS ===== */}
       <div className="relative w-full py-20 flex flex-col md:flex-row justify-center gap-10 px-4">
-        {plans.map((card, index) => (
+        {tickets.length === 0 && (
+          <div className="text-purple-200 text-lg">
+            No tickets available
+          </div>
+        )}
+
+        {tickets.map((t) => (
           <div
-            key={index}
+            key={t.id}
             className="
               bg-[#4A0170]/70 backdrop-blur-xl rounded-3xl 
               p-8 w-full md:w-80 text-center 
@@ -85,33 +116,24 @@ export default function Ticket() {
               shadow-[0_0_35px_#ff00ff90]
               hover:shadow-[0_0_60px_#ff00ff]
               hover:-translate-y-2
-              hover:border-pink-500
-              transition-all duration-300
+              transition-all
             "
           >
             <h3 className="text-lg tracking-widest mb-4">
-              <span
-                className="
-                  bg-gradient-to-r from-pink-500/40 to-[#C300FF]/40 
-                  px-3 py-1 rounded-full text-white shadow-md 
-                  border border-white/10
-                "
-              >
-                {card.title}
+              <span className="bg-gradient-to-r from-pink-500/40 to-[#C300FF]/40 px-3 py-1 rounded-full">
+                {t.category}
               </span>
             </h3>
 
-            <h1 className="text-5xl font-bold mb-8">{card.price}</h1>
-
-            <ul className="space-y-3 text-sm opacity-90 mb-10">
-              {card.features.map((f, i) => (
-                <li key={i}>{f}</li>
-              ))}
-            </ul>
+            <h1 className="text-5xl font-bold mb-2">₹{t.price}</h1>
+            <p className="text-sm text-purple-200 mb-6">
+              Stock left: {t.stock}
+            </p>
 
             <button
-              onClick={() => openPopup(card.title)}
-              className="bg-[#A300E0] hover:bg-[#C300FF] transition-all px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-[0_0_20px_#ff00ff]"
+              disabled={t.stock <= 0}
+              onClick={() => openPopup(t)}
+              className="bg-[#A300E0] hover:bg-[#C300FF] px-8 py-3 rounded-full font-semibold disabled:opacity-50"
             >
               Purchase
             </button>
@@ -119,55 +141,22 @@ export default function Ticket() {
         ))}
       </div>
 
-      {/* =================================================== */}
-      {/*                 SPONSOR SECTION FIXED              */}
-      {/* =================================================== */}
-
-      <div className="relative w-full py-20 overflow-hidden">
-
-        {/* Background */}
-        <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2?auto=format&fit=crop&w=1500&q=80"
-            className="w-full h-full object-cover opacity-50"
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-800/70 via-purple-900/80 to-indigo-900/70 backdrop-blur-sm"></div>
-        </div>
-
-        {/* Heading */}
-        <h3 className="relative z-10 text-center text-lg tracking-[0.3em] font-semibold text-purple-200 mb-6">
-          SPONSORS
-        </h3>
-
-        {/* Logos sliding */}
-        <div className="relative z-10 h-[30vh] w-full overflow-hidden">
-          <div className="flex items-center gap-20 animate-slide">
-
-            <img src="/logos/Amazon.png" className="h-50 opacity-80 hover:opacity-100 transition drop-shadow-[0_0_12px_#00ff88]" />
-            <img src="/logos/Spotify.png" className="h-50 opacity-80 hover:opacity-100 transition drop-shadow-[0_0_12px_#00ff88]" />
-            <img src="/logos/Bandlab.png" className="h-50 opacity-80 hover:opacity-100 transition drop-shadow-[0_0_12px_#00ff88]" />
-            <img src="/logos/Jazz.png" className="h-50 opacity-100 hover:opacity-150 transition drop-shadow-[0_0_12px_#00ff88]" />
-            <img src="/logos/Play.png" className="h-50 opacity-80 hover:opacity-100 transition drop-shadow-[0_0_12px_#00ff88]" />
-            <img src="/logos/Soundbeat.png" className="h-50 opacity-80 hover:opacity-100 transition drop-shadow-[0_0_12px_#00ff88]" />
-            <img src="/logos/Youtube.png" className="h-50 opacity-80 hover:opacity-100 transition drop-shadow-[0_0_12px_#00ff88]" />
-
-          </div>
-        </div>
-      </div>
-
       {/* ===== POPUP ===== */}
-      {openModal && (
+      {openModal && selectedTicket && (
         <div className="fixed inset-0 flex items-center justify-center bg-black/70 backdrop-blur-lg z-50">
-          <div className="bg-[#3A0155] p-8 rounded-3xl w-80 text-center shadow-[0_0_30px_#ff00ff] border border-purple-400/40">
+          <div className="bg-[#3A0155] p-8 rounded-3xl w-80 text-center border border-purple-400/40">
 
-            <h2 className="text-2xl font-bold mb-3">Purchase Ticket</h2>
+            <h2 className="text-2xl font-bold mb-3">Confirm Booking</h2>
 
-            <p className="text-purple-200 mb-6">
-              You selected:{" "}
-              <span className="text-pink-400 font-semibold">{selectedPlan}</span>
+            <p className="text-purple-200 mb-4">
+              <strong>{selectedTicket.category}</strong><br />
+              Price: ₹{selectedTicket.price}
             </p>
 
-            <button className="bg-[#A300E0] hover:bg-[#C300FF] px-6 py-2 rounded-full font-semibold shadow-lg">
+            <button
+              onClick={confirmBooking}
+              className="bg-[#A300E0] hover:bg-[#C300FF] px-6 py-2 rounded-full font-semibold w-full"
+            >
               Confirm
             </button>
 
@@ -177,11 +166,9 @@ export default function Ticket() {
             >
               Cancel
             </button>
-
           </div>
         </div>
       )}
-
     </div>
   );
 }

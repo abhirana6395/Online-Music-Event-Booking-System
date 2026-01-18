@@ -1,46 +1,31 @@
-import React from "react";
+
+import React, {useEffect, useState} from "react";
+import api from "../utils/api";
+import buildImageUrl from "../utils/image";
 import { FaFacebookF, FaInstagram, FaTwitter, FaWhatsapp } from "react-icons/fa";
 
 export default function Performers() {
-  const artists = [
-    {
-      name: "Kate Middleton",
-      role: "Rock Star",
-      img: "https://images.unsplash.com/photo-1542596768-5d1d21f1cf98?auto=format&fit=crop&w=800&q=80",
-    },
-    {
-      name: "Randall Walters",
-      role: "Selko Band",
-      img: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=800&q=80",
-    },
-    {
-      name: "Lillian Chapman",
-      role: "Melody Star",
-      img: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=800&q=80",
-    },
-    {
-      name: "Randall Walters",
-      role: "Selko Band",
-      img: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=800&q=80",
-    },
-    {
-      name: "Randall Walters",
-      role: "Selko Band",
-      img: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=800&q=80",
-    },
-    {
-      name: "Randall Walters",
-      role: "Selko Band",
-      img: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=800&q=80",
-    },
+    const [artists, setArtists] = useState([]);
+    const [loading, setLoading] = useState(true);
 
+    useEffect(() => {
+      loadPerformers();
+}, []);
 
-    {
-      name: "Randall Walters",
-      role: "Selko Band",
-      img: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=800&q=80",
-    },
-  ];
+  async function loadPerformers() {
+    try {
+      const response = await api.get("/public/performers");
+      setArtists(response.data || []);
+    } catch (error) {
+      console.error("Failed to load performers:", error);
+    } finally {
+      setLoading(false);
+    }
+  }
+  if(loading){
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-black text-white">Loading...</div>);
+  }
 
   return (
     <div className="min-h-screen w-full text-white">
@@ -72,7 +57,7 @@ export default function Performers() {
             key={idx}
             className="bg-[#3a0072]/80 backdrop-blur-lg rounded-[60px] pt-14 pb-10 flex flex-col items-center border border-purple-500/40 shadow-2xl">
             <div className="w-64 h-64 rounded-full overflow-hidden border-4 border-purple-500">
-              <img src={artist.img} alt={artist.name} className="w-full h-full object-cover" />
+              <img src={buildImageUrl(artist.image || artist.img)} alt={artist.name} className="w-full h-full object-cover" />
             </div>
 
             <h2 className="mt-6 text-2xl font-bold">{artist.name}</h2>

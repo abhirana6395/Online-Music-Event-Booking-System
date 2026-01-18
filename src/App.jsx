@@ -9,7 +9,7 @@ import Performers from "./pages/Performers";
 import Contact from "./pages/Contact";
 import Footer from "./components/Footer";
 import LatestNews from "./pages/LatestNews";
-import BlogDetail from "./pages/BlogDetail";
+import Blog from "./pages/Blog";
 import Ticket from "./pages/Ticket";
 import Venue from "./pages/Venue";
 import Register from "./pages/Register";
@@ -49,7 +49,7 @@ function Layout() {
         <Route path="/event-schedule" element={<EventSchedule />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/blog" element={<LatestNews />} />
-        <Route path="/blog/:id" element={<BlogDetail />} />
+        <Route path="/blog/:id" element={<Blog />} />
         <Route path="/ticket" element={<Ticket />} />
         <Route path="/venue" element={<Venue />} />
         <Route path="/register" element={<Register />} />

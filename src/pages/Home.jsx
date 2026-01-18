@@ -185,7 +185,7 @@ export default function Home() {
   {/* LEFT IMAGE */}
   <div className="w-full md:w-1/2 flex justify-center relative">
     <img
-      src="public/logos/woman.png"
+      src="/logos/woman.png"
       alt="hero-girl"
       className="w-[550px] h-[400px] drop-shadow-2xl relative bottom-[-100px]"
     />

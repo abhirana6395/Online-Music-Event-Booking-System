@@ -1,6 +1,7 @@
 // src/admin/pages/AdminPerformers.jsx
 import React, { useEffect, useState, useMemo } from "react";
 import api from "../../utils/api";
+import buildImageUrl from "../../utils/image";
 import toast from "react-hot-toast";
 import { FiPlus, FiEdit, FiTrash2, FiX, FiDownload } from "react-icons/fi";
 
@@ -315,7 +316,7 @@ export default function AdminPerformers() {
 
                 <div className="w-full h-44 rounded-lg overflow-hidden mb-4">
                   <img
-                    src={p.image || p.imageUrl || p.imagePreview || "https://via.placeholder.com/600x400?text=No+Image"}
+                    src={buildImageUrl(p.image || p.imageUrl || p.imagePreview)}
                     alt={p.name}
                     className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                   />

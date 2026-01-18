@@ -18,7 +18,7 @@ export default function AdminBlogs() {
     content: "",
     author: "",
     status: "active",
-    imageFile: null,
+    imageUrl: null,
     imagePreview: ""
   };
 
@@ -96,8 +96,8 @@ export default function AdminBlogs() {
       content: b.content || "",
       author: b.author || "",
       status: b.status || "active",
-      imageFile: null,
-      imagePreview: b.imageUrl || ""
+      imageUrl: null,
+      imagePreview: b.imageUrl ? `http://localhost:8080${b.imageUrl}` : ""
     });
     setOpen(true);
   }
@@ -112,7 +112,7 @@ export default function AdminBlogs() {
 
     setForm(f => ({
       ...f,
-      imageFile: file,
+      imageUrl: file,
       imagePreview: URL.createObjectURL(file)
     }));
   }
@@ -125,14 +125,18 @@ export default function AdminBlogs() {
     fd.append("content", form.content);
     fd.append("author", form.author);
     fd.append("status", form.status);
-    if (form.imageFile) fd.append("imageFile", form.imageFile);
+    if (form.imageUrl) fd.append("imageUrl", form.imageUrl);
 
     try {
       if (editing) {
-        await api.put(`/blogs/${editing.id}`, fd);
+        await api.put(`/blogs/${editing.id}`, fd, {
+          headers: { "Content-Type": "multipart/form-data" }
+        });
         toast.success("Blog updated");
       } else {
-        await api.post("/blogs", fd);
+        await api.post("/blogs", fd, {
+          headers: { "Content-Type": "multipart/form-data" }
+        });
         toast.success("Blog created");
       }
 
@@ -194,7 +198,7 @@ export default function AdminBlogs() {
         {pagedBlogs.map(b => (
           <div key={b.id} className="bg-white rounded shadow p-4">
             <img
-              src={b.imageUrl || "https://via.placeholder.com/400x200"}
+              src={b.imageUrl ? `http://localhost:8080${b.imageUrl}` : "https://via.placeholder.com/400x200"}
               className="h-40 w-full object-cover rounded mb-3"
               alt=""
             />
